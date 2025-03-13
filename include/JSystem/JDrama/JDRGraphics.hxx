@@ -13,6 +13,7 @@ namespace JDrama {
         bool _20;
         u8 _21[0x54 - 0x21];
         TRect mViewPortSpace;
+        TRect mClipRect;
     };
 
 }  // namespace JDrama

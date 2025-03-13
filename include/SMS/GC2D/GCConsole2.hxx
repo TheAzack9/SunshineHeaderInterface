@@ -33,7 +33,9 @@ public:
     u16 _03;                 // 0x0048
     bool mIsResetTimer;      // 0x004A
     bool mWaterCardFalling;  // 0x004B
-    u32 _05[0x28 / 4];       // 0x004C
+    u32 _05[0x27 / 4];       // 0x004C
+    s16 mMarioCardTimer;     // 0x0070
+    s16 _72;                 // 0x0072
     s16 mRedCoinCardTimer;   // 0x0074
     s16 mTimerCardTimer;     // 0x0076
     u32 _78[0x1C / 4];
@@ -48,14 +50,18 @@ public:
     J2DScreen *mMainScreen;                  // 0x00B0
     u32 _B4[0xC8 / 4];                       // 0x00B4
     HealthPoint mHealthPoints[9];            // 0x017C
-    u32 _1C4[2];
+    TBoundPane* mHealthPane;
+    short* _1C8;
+    short* _1CA;
     s8 mHealthCount;               // 0x01CC
     JUTRect mHealthPointRects[9];  // 0x01D0
     u32 _260[0x40 / 4];
     J2DPicture *mWaterTopPanel;   // 0x02A0
     u32 _09[0x14 / 4];            // 0x02A4
     u32 mWaterCardTopHeight;      // 0x02B8
-    u32 _10[0x170 / 4];           // 0x02BC
+    u32 _10[0xe8 / 4];           // 0x02BC
+    TExPane* mMarioPanel;        // 0x03A8   
+    u32 _3AC[0x84 / 4];           // 0x03AC
     TExPane *mRedCoinPanelBack;   // 0x042C
     TExPane *mRedCoinPanel;       // 0x0430
     TExPane *_434;                // 0x0434

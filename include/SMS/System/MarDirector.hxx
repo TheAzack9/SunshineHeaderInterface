@@ -72,8 +72,8 @@ public:
     s32 setup(JDrama::TDisplay *, TMarioGamePad **, u8 areaID, u8 episodeID);
 
     TMarioGamePad **mGamePads;
-    TPerformList *mPerformListGX;
-    TPerformList *mPerformListSilhouette;
+    TPerformList *mPerformListGX;          // 0x001c
+    TPerformList *mPerformListSilhouette;  // 0x0020
     TPerformList *mPerformListGXPost;      // 0x0024
     TPerformList *mPerformListMovement;    // 0x0028
     TPerformList *mPerformListCalcAnim;    // 0x002C
@@ -105,7 +105,10 @@ public:
     u32 _11;                              // 0x00B0
     u8 mNextState;                        // 0x00B4
     JKRMemArchive *mCurrentStageArchive;  // 0x00B8
-    u32 _12[0x18 / 4];                    // 0x00BC
+    u32 _12[0x17 / 4];                    // 0x00BC
+    bool hasPreviousLevelLocation;        // 0x00D0
+    u8 warpOutState;                      // 0x00D1
+    u16 _d2;                              // 0x00D2
     u32 *mGame6Data;                      // 0x00D4
     u32 *mAramArchive;                    // 0x00D8
     TShineFader *mShineFader;             // 0x00DC

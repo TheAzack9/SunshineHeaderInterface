@@ -36,10 +36,17 @@ public:
     void makeEmit(const TWaterEmitInfo &info);
     void move();
     void wind(const TVec3f &);
-
+    
+    u16 _00;              // 0x0008
     s16 mMaxEmit;         // 0x0010
     s16 mEmitCount;       // 0x0012
-    u32 _03[0x5D48 / 4];  // 0x0014
+    f32 mWaterAliveTime[0x400/4]; // 0x0014
+    u16 mAngle0[0x200 / 2]; // 0x0414
+    u16 mAngle1[0x200 / 2]; // 0x0614
+    f32 mUnk[0xc00 / 4];   // 0x0814 position? Is three numbers in order, should probably be a structure
+    f32 mUnk2[0xc00 / 4];   // 0x1414 angle? Is three numbers in order, should probably be a structure
+    f32 mUnk3[0x400/4]; // 0x2014
+    u32 _03[0x3D48 / 4];  // 0x2414
     u16 _04;              // 0x5D5C
     u8 _05;               // 0x5D5E
     s8 mWaterCardType;    // 0x5D5F

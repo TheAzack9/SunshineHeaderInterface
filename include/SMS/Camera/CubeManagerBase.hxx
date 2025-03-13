@@ -18,18 +18,20 @@ public:
 
     void calcPointInCubeRatio(const Vec &, s32, f32 *, f32 *, f32 *) const;
     s32 getDataNo(s32) const;
-    s32 getInCubeNo(const Vec &pos) const;
+    u32 getInCubeNo(const Vec &pos) const;
     bool isInCube(const Vec &pos, s32) const;
 
-    template <typename CubeT>
-    inline TNameRefPtrAryT<CubeT> *getCubeInfo() {
-        return static_cast<TNameRefPtrAryT<CubeT> *>(mCubeInfo);
-    }
+    //template <typename CubeT>
+    //inline TNameRefPtrAryT<CubeT> *getCubeInfo() {
+    //    return static_cast<TNameRefPtrAryT<CubeT> *>(mCubeInfo);
+    //}
 
     u16 _0E;
     u8 mCubeMax;
-    void *mCubeInfo;
-    const char *mCubeKey;
+    JGadget::TVector_pointer_void *mCubes;
+    const char *_18;
+    //u32 _u18; //?
+    u32 mCurrentCube;
 };
 
 extern TCubeManagerBase *gpCubeMirror;

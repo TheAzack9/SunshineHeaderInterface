@@ -28,11 +28,15 @@ public:
     void setTagParam(JSUMemoryInputStream &stream, J2DTextBox &textbox, int *charLength,
                      int *lineNum);
 
-    u32 _00[0x28 / 4];   // 0x0000
+    u32 _00[0x14 / 4];   // 0x0000
+    TBoundPane* talkPane; // 0x0014
+    u32 _18[0x10 / 4];   // 0x0018
     bool isBillBoard;    // 0x0028
     u8 _01;              // 0x0029
     u16 _02;             // 0x002A
-    u32 _03[0x248 / 4];  // 0x002C
+    u32 _2c[0x220 / 4];  // 0x002C
+    TMarioGamePad* gamepad; // 0x024C
+    u32 _250[0x24 / 4];   // 0x0250
     u32 lastMsgIndex;    // 0x0274
     u32 curMsgIndex;     // 0x0278
 };

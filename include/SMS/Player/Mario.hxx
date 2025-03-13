@@ -1251,8 +1251,8 @@ public:
     u32 _390;
     J3DDrawBuffer *mDrawBufferA;  // 0x0394
     J3DDrawBuffer *mDrawBufferB;  // 0x0398
-    u32 _39C;
-    u32 _3A0;
+    J3DDrawBuffer *_39C;
+    J3DDrawBuffer *_3A0;
     u32 _3A4;                      // unknown
     M3UModelMario *mModelData;     // 0x03A8
     J3DModelData *mBodyModelData;  // unknown
@@ -1275,7 +1275,7 @@ public:
     u32 _3E8;
     f32 _3EC;
     TYoshi *mYoshi;      // 0x03F0
-    void *mSurfGesso;    // 0x03F4
+    MActor *mSurfGesso;    // 0x03F4
     MActor *mTorocco;    // 0x03F8
     MActor *mPinnaRail;  // 0x03FC
     MActor *mKoopaRail;  // 0x0400

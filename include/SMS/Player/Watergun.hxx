@@ -37,7 +37,7 @@ public:
     void rotateProp(f32);
     void setAmountToRate(f32);
     void setBaseTRMtx(Mtx);
-    void suck();
+    bool suck();
     void triggerPressureMovement(const TMarioControllerWork &);
 
     u32 _04;                                // 0x0000

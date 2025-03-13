@@ -1,6 +1,7 @@
 #include <Dolphin/types.h>
 #include <SMS/Manager/LiveManager.hxx>
 #include <SMS/MapObj/MapObjBase.hxx>
+#include <SMS/MoveBG/Item.hxx>
 
 class TMapObjBaseManager : public TLiveManager {
 public:
@@ -12,7 +13,7 @@ public:
     virtual void createModelData() override;
 
     u32 getObjNumWithActorType(u32) const;
-    void makeObjAppear(f32, f32, f32, u32, bool);
+    TItem*  makeObjAppear(f32, f32, f32, u32, bool);
     void makeObjAppear(u32);
     void makeObjAppeared(u32);
 

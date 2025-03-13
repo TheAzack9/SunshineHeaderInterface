@@ -23,4 +23,6 @@ public:
     void manageActor(TLiveActor *actor);
 
     TSpcBinary *mSpcBinary;  // _34
+    u32 mClipFar;
+    u32 _3c;
 };

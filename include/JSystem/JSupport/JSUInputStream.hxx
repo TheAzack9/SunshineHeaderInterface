@@ -28,6 +28,6 @@ public:
     virtual s32 seekPos(s32, JSUStreamSeekFrom) = 0;
 
     u32 align(s32);
-    u32 peek(s32);
+    u32 peek(void *, s32);
     void seek(s32, JSUStreamSeekFrom);
 };
