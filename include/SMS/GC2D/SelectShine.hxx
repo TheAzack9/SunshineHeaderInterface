@@ -3,10 +3,13 @@
 #include <JSystem/JDrama/JDRNameRef.hxx>
 #include <JSystem/JParticle/JPABaseEmitter.hxx>
 
+class JPAEmitterManager;
+
 class TSelectShine {
 public:
-    TSelectShine(J3DModelData *data, J3DAnmColor *acolor, void *emitterManager, TVec3f &pos,
-                 s16 unk1, u8 unk2, f32 unk3, f32 unk4, f32 unk5);
+    TSelectShine(J3DModelData *data, J3DAnmColor *acolor,
+                 JPAEmitterManager *emitterManager, TVec3f &pos, s16 unk1, u8 unk2,
+                 f32 unk3, f32 unk4, f32 unk5);
     virtual ~TSelectShine();
     virtual void move();
 
