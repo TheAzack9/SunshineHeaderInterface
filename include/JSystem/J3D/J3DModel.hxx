@@ -11,7 +11,9 @@
 #include <JSystem/JUtility/JUTNameTab.hxx>
 
 class J3DModelHierarchy;
+class J3DMaterial;
 class J3DNode;
+class J3DShape;
 
 class J3DModelData {
 public:
@@ -32,20 +34,23 @@ public:
     void setTexMtxAnimator(J3DAnmTextureSRTKey *, J3DTexNtxAnm *);
     void setTexNoAnimator(J3DAnmTexPattern *, J3DTexNoAnm *);
 
+    u16 getMaterialNum() const { return mMaterialNum; }
+    J3DMaterial *getMaterialNodePointer(u16 index) const { return mMaterials[index]; }
+
     u32 _4;
     u32 _8;
     u32 _C;
-    u32 mModelFlags;
+    u32 _10;
     u32 _14;
     u16 _18;
     u16 _1A;
-    u16 _1C;
-    J3DJoint **mJoints;
     u16 mJointNum;
-    J3DTevStage **mStages;     // ?
-    u16 mStageNum;             // ?
-    JUTNameTab **mJointNames;  // JUTNameTab (joints)
-    u16 mJointNameNum;
+    J3DJoint **mJoints;
+    u16 mMaterialNum;
+    J3DMaterial **mMaterials;
+    u16 mShapeNum;
+    J3DShape **mShapes;
+    u16 _34;
     u32 _38;
     J3DVertexData mVertexData;  // _3C
     u32 _80;

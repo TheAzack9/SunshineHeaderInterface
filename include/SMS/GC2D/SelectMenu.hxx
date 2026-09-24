@@ -48,7 +48,8 @@ public:
     JUTTexture *mCoinCountNumberTex[10];  // 0x00A8
     JUTTexture *mScMark1;
     JUTTexture *mScMark0;
-    u32 _D8[0x2C / 4];
+    J2DPicture *mEpisodePictures[8];  // 0x00D8
+    u32 _F8[0x0C / 4];
     J2DPane *mA_l;  // 0x0104
     J2DPane *mA_r;  // 0x0108
     bool _10C;

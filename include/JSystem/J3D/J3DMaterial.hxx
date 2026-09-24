@@ -10,6 +10,28 @@
 #include <JSystem/JSupport/JSUInputStream.hxx>
 
 class J3DTevBlock;
+class J3DMaterial;
+class J3DMatColorAnm;
+class J3DTexMtxAnm;
+class J3DTexNoAnm;
+class J3DTevColorAnm;
+class J3DTevKColorAnm;
+
+class J3DMaterialAnm {
+public:
+    J3DMaterialAnm() { initialize(); }
+    virtual ~J3DMaterialAnm() {}
+    virtual void calc(J3DMaterial *) const;
+
+    void initialize();
+
+private:
+    J3DMatColorAnm *mMatColorAnm[2];
+    J3DTexMtxAnm *mTexMtxAnm[8];
+    J3DTexNoAnm *mTexNoAnm[8];
+    J3DTevColorAnm *mTevColorAnm[4];
+    J3DTevKColorAnm *mTevKColorAnm[4];
+};
 
 class J3DPEBlock {
 public:
@@ -31,15 +53,31 @@ struct J3DTevStage {
     void setTevAlphaOp(u8, u8, u8, u8, u8);
     void setTevColorOp(u8, u8, u8, u8, u8);
 
-    u8 _00;
-    u8 mColorOp;
-    u8 _02;
-    u8 _03;
-    u8 _04;
-    u8 mAlphaOp;
-    u8 _06;
-    u8 _07;
-    J3DTevBlock *mTevBlock;
+    void setTevColorCD(u8 c, u8 d) { mTevColorCD = (c << 4) | d; }
+    void setAlphaA(u8 a) { mTevAlphaAB = (mTevAlphaAB & ~(0x07 << 5)) | (a << 5); }
+    void setAlphaB(u8 b) { mTevAlphaAB = (mTevAlphaAB & ~(0x07 << 2)) | (b << 2); }
+    void setAlphaC(u8 c) {
+        mTevAlphaAB      = (mTevAlphaAB & ~0x03) | (c >> 1);
+        mTevSwapModeInfo = (mTevSwapModeInfo & ~(0x01 << 7)) | (c << 7);
+    }
+    void setAlphaD(u8 d) {
+        mTevSwapModeInfo = (mTevSwapModeInfo & ~(0x07 << 4)) | (d << 4);
+    }
+    void setAlphaABCD(u8 a, u8 b, u8 c, u8 d) {
+        setAlphaA(a);
+        setAlphaB(b);
+        setAlphaC(c);
+        setAlphaD(d);
+    }
+
+    u8 mTevColorReg;
+    u8 mTevColorOp;
+    u8 mTevColorAB;
+    u8 mTevColorCD;
+    u8 mTevAlphaReg;
+    u8 mTevAlphaOp;
+    u8 mTevAlphaAB;
+    u8 mTevSwapModeInfo;
 };
 
 struct J3DTevSwapModeInfo {};
@@ -78,7 +116,7 @@ public:
     virtual s32 getTevColor(s32 idx)                                           = 0;
     virtual void setTevKColor(s32 idx, J3DGXColor color)                       = 0;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color)                = 0;
-    virtual s32 getTevKColor(s32 idx)                                          = 0;
+    virtual J3DGXColor *getTevKColor(s32 idx)                                  = 0;
     virtual void setTevKColorSel(s32 idx, u8 sel)                              = 0;
     virtual void setTevKColorSel(s32 idx, const u8 *sel)                       = 0;
     virtual s32 getTevKColorSel(s32 idx)                                       = 0;
@@ -90,7 +128,7 @@ public:
     virtual s32 getTevStageNum(s32 idx)                                        = 0;
     virtual void setTevStage(s32 idx, J3DTevStage stage)                       = 0;
     virtual void setTevStage(s32 idx, const J3DTevStage *stage)                = 0;
-    virtual s32 getTevStage(s32 idx)                                           = 0;
+    virtual J3DTevStage *getTevStage(s32 idx)                                  = 0;
     virtual void setTevSwapModeInfo(s32 idx, J3DTevSwapModeInfo info)          = 0;
     virtual void setTevSwapModeInfo(s32 idx, const J3DTevSwapModeInfo *info)   = 0;
     virtual void setTevSwapModeTable(s32 idx, J3DTevSwapModeTable info)        = 0;
@@ -119,7 +157,7 @@ public:
     virtual s32 getTevColor(s32 idx) override;
     virtual void setTevKColor(s32 idx, J3DGXColor color) override;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color) override;
-    virtual s32 getTevKColor(s32 idx) override;
+    virtual J3DGXColor *getTevKColor(s32 idx) override;
     virtual void setTevKColorSel(s32 idx, u8 sel) override;
     virtual void setTevKColorSel(s32 idx, const u8 *sel) override;
     virtual s32 getTevKColorSel(s32 idx) override;
@@ -131,7 +169,7 @@ public:
     virtual s32 getTevStageNum(s32 idx) override;
     virtual void setTevStage(s32 idx, J3DTevStage stage) override;
     virtual void setTevStage(s32 idx, const J3DTevStage *stage) override;
-    virtual s32 getTevStage(s32 idx) override;
+    virtual J3DTevStage *getTevStage(s32 idx) override;
     virtual void setTevSwapModeInfo(s32 idx, J3DTevSwapModeInfo info) override;
     virtual void setTevSwapModeInfo(s32 idx, const J3DTevSwapModeInfo *info) override;
     virtual void setTevSwapModeTable(s32 idx, J3DTevSwapModeTable info) override;
@@ -160,7 +198,7 @@ public:
     virtual s32 getTevColor(s32 idx) override;
     virtual void setTevKColor(s32 idx, J3DGXColor color) override;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color) override;
-    virtual s32 getTevKColor(s32 idx) override;
+    virtual J3DGXColor *getTevKColor(s32 idx) override;
     virtual void setTevKColorSel(s32 idx, u8 sel) override;
     virtual void setTevKColorSel(s32 idx, const u8 *sel) override;
     virtual s32 getTevKColorSel(s32 idx) override;
@@ -172,7 +210,7 @@ public:
     virtual s32 getTevStageNum(s32 idx) override;
     virtual void setTevStage(s32 idx, J3DTevStage stage) override;
     virtual void setTevStage(s32 idx, const J3DTevStage *stage) override;
-    virtual s32 getTevStage(s32 idx) override;
+    virtual J3DTevStage *getTevStage(s32 idx) override;
     virtual void setTevSwapModeInfo(s32 idx, J3DTevSwapModeInfo info) override;
     virtual void setTevSwapModeInfo(s32 idx, const J3DTevSwapModeInfo *info) override;
     virtual void setTevSwapModeTable(s32 idx, J3DTevSwapModeTable info) override;
@@ -201,7 +239,7 @@ public:
     virtual s32 getTevColor(s32 idx) override;
     virtual void setTevKColor(s32 idx, J3DGXColor color) override;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color) override;
-    virtual s32 getTevKColor(s32 idx) override;
+    virtual J3DGXColor *getTevKColor(s32 idx) override;
     virtual void setTevKColorSel(s32 idx, u8 sel) override;
     virtual void setTevKColorSel(s32 idx, const u8 *sel) override;
     virtual s32 getTevKColorSel(s32 idx) override;
@@ -213,7 +251,7 @@ public:
     virtual s32 getTevStageNum(s32 idx) override;
     virtual void setTevStage(s32 idx, J3DTevStage stage) override;
     virtual void setTevStage(s32 idx, const J3DTevStage *stage) override;
-    virtual s32 getTevStage(s32 idx) override;
+    virtual J3DTevStage *getTevStage(s32 idx) override;
     virtual void setTevSwapModeInfo(s32 idx, J3DTevSwapModeInfo info) override;
     virtual void setTevSwapModeInfo(s32 idx, const J3DTevSwapModeInfo *info) override;
     virtual void setTevSwapModeTable(s32 idx, J3DTevSwapModeTable info) override;
@@ -242,7 +280,7 @@ public:
     virtual s32 getTevColor(s32 idx) override;
     virtual void setTevKColor(s32 idx, J3DGXColor color) override;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color) override;
-    virtual s32 getTevKColor(s32 idx) override;
+    virtual J3DGXColor *getTevKColor(s32 idx) override;
     virtual void setTevKColorSel(s32 idx, u8 sel) override;
     virtual void setTevKColorSel(s32 idx, const u8 *sel) override;
     virtual s32 getTevKColorSel(s32 idx) override;
@@ -254,7 +292,7 @@ public:
     virtual s32 getTevStageNum(s32 idx) override;
     virtual void setTevStage(s32 idx, J3DTevStage stage) override;
     virtual void setTevStage(s32 idx, const J3DTevStage *stage) override;
-    virtual s32 getTevStage(s32 idx) override;
+    virtual J3DTevStage *getTevStage(s32 idx) override;
     virtual void setTevSwapModeInfo(s32 idx, J3DTevSwapModeInfo info) override;
     virtual void setTevSwapModeInfo(s32 idx, const J3DTevSwapModeInfo *info) override;
     virtual void setTevSwapModeTable(s32 idx, J3DTevSwapModeTable info) override;
@@ -309,6 +347,8 @@ public:
     J3DDisplayListObj *newSharedDisplayList(u32);
     void safeMakeDisplayList();
     void setCurrentMtx();
+    void setMaterialAnm(J3DMaterialAnm *animation) { mMaterialAnm = animation; }
+    J3DTevBlock *getTevBlock() { return mTevBlock; }
 
     u32 *_0;
     J3DShape *shape;  // _4
@@ -321,11 +361,11 @@ public:
     u32 _1C;
     u32 *_20;  // *TItemManager
     u32 *_24;  // *TItemManager
-    u32 *_28;
+    J3DTevBlock *mTevBlock;
     u32 _2C;  // *TItemManager
     u32 _30;
     u32 *_34;
-    u32 _38;
+    J3DMaterialAnm *mMaterialAnm;
     J3DDisplayListObj dispListObj;  // _3C
 };
 

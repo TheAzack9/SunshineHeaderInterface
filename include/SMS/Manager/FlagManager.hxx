@@ -103,13 +103,16 @@ public:
         u8 _02[0xE];  // 0x00E6
     } Type5Flag;
 
-    struct {
-        s32 mRedCoinCount;      // 0x00F4
-        s32 mBJRBalloonCount;   // 0x00F8
-        s32 _00;                // 0x00FC
-        s32 mShadowMarioEvent;  // 0x0100
-        u32 _01[0x180 / 4];     // 0x0104;
-    } Type6Flag;
+    union {
+        struct {
+            s32 mRedCoinCount;      // 0x00F4
+            s32 mBJRBalloonCount;   // 0x00F8
+            s32 _00;                // 0x00FC
+            s32 mShadowMarioEvent;  // 0x0100
+            u32 _01[0x180 / 4];     // 0x0104;
+        } Type6Flag;
+        s32 mStageFlags[100];  // 0x00F4
+    };
 
     struct {
         bool mRumbleDisabled    : 1;  // 0x0284

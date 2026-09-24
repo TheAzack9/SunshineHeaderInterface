@@ -4,6 +4,8 @@
 #include <JSystem/J3D/J3DTransform.hxx>
 #include <JSystem/JUtility/JUTNameTab.hxx>
 
+class J3DModelData;
+
 class J3DTexNoAnm {
 public:
     u32 *vTable;  // _0
@@ -11,7 +13,10 @@ public:
     u16 _6;  // padding?
 };
 
-class J3DAnmColor {};
+class J3DAnmColor {
+public:
+    void searchUpdateMaterialID(J3DModelData *modelData);
+};
 
 class J3DAnmTevRegKey {};
 

@@ -6,6 +6,8 @@
 #include <JSystem/JUtility/JUTColor.hxx>
 #include <SMS/GC2D/ConsoleStr.hxx>
 
+class TBoundPane;
+
 class TGCConsole2 {
 
 public:
@@ -14,7 +16,9 @@ public:
         J2DPicture *mInactivePicture;
     };
 
-    u32 _00[0x24 / 4];    // 0x0000
+    u32 _00[0x14 / 4];    // 0x0000
+    u32 mWaterPressureState;  // 0x0014
+    u32 _18[0xC / 4];     // 0x0018
     s32 mShineCount;      // 0x0024
     s32 mCurWater;        // 0x0028
     u32 _2C[0x10 / 4];    // 0x002C
@@ -30,7 +34,8 @@ public:
     bool mWaterCardRising;   // 0x0045
     bool mIsWaterCard;       // 0x0046
     u8 _02;                  // 0x0047
-    u16 _03;                 // 0x0048
+    bool mWaterPressureActive;    // 0x0048
+    bool mWaterPressureReleased;  // 0x0049
     bool mIsResetTimer;      // 0x004A
     bool mWaterCardFalling;  // 0x004B
     u32 _05[0x28 / 4];       // 0x004C
@@ -51,11 +56,15 @@ public:
     u32 _1C4[2];
     s8 mHealthCount;               // 0x01CC
     JUTRect mHealthPointRects[9];  // 0x01D0
-    u32 _260[0x40 / 4];
+    u32 _260[0xC / 4];
+    TBoundPane *mWaterBackPanel;  // 0x026C
+    u32 _270[0x30 / 4];
     J2DPicture *mWaterTopPanel;   // 0x02A0
     u32 _09[0x14 / 4];            // 0x02A4
     u32 mWaterCardTopHeight;      // 0x02B8
-    u32 _10[0x170 / 4];           // 0x02BC
+    u32 _2BC[0x50 / 4];           // 0x02BC
+    u8 mWaterPressureAnimationFrame; // 0x030C
+    u8 _30D[0x11F];               // 0x030D
     TExPane *mRedCoinPanelBack;   // 0x042C
     TExPane *mRedCoinPanel;       // 0x0430
     TExPane *_434;                // 0x0434
