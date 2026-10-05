@@ -75,7 +75,7 @@ public:
     bool isHellDeadDemo() const;
     bool isJetCoaster1stCamera() const;
     bool isLButtonCameraInbetween();
-    bool isLButtonCameraSpecifyMode(int);
+    bool isLButtonCameraSpecifyMode(int) const;
     bool isMarioAimWithGun_() const;
     bool isMarioCrabWalk_() const;
     bool isMomentDefinite_() const;
@@ -113,7 +113,8 @@ public:
     void warpPosAndAt(f32, s16);
     void warpPosAndAt(const Vec &, const Vec &);
 
-    u32 _00[0x14 / 4];  // 0x0050
+    int mMode;         // 0x0050
+    u32 _00[0x10 / 4];
     struct {
         u8 _00                : 4;
         bool mCenterUp        : 1;

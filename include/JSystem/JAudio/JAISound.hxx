@@ -13,17 +13,17 @@ class JAISound {
 public:
     JAISound();
 
-    virtual void setSeDistanceParameters();
-    virtual void setSeDistanceVolume(u8);
-    virtual void setSeDistancePan(u8);
-    virtual void setSeDistancePitch(u8);
-    virtual void setSeDistanceFxmix(u8);
-    virtual void setSeDistanceFir(u8);
-    virtual void setSeDistanceDolby(u8);
-    virtual void setSePositionDopplar();
-    virtual void setPositionDopplarCommon(u32);
-    virtual void setDistanceVolumeCommon(f32, u8);
-    virtual void setDistancePanCommon();
+    void setSeDistanceParameters();
+    void setSeDistanceVolume(u8);
+    void setSeDistancePan(u8);
+    void setSeDistancePitch(u8);
+    void setSeDistanceFxmix(u8);
+    void setSeDistanceFir(u8);
+    void setSeDistanceDolby(u8);
+    void setSePositionDopplar();
+    void setPositionDopplarCommon(u32);
+    void setDistanceVolumeCommon(f32, u8);
+    void setDistancePanCommon();
 
     u32 checkSwBit(u32);
     void clearMainSoundPPointer();

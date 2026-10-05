@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Dolphin/GX.h>
 #include <JSystem/JParticle/JPABaseParticle.hxx>
 #include <JSystem/JSupport/JSUList.hxx>
 

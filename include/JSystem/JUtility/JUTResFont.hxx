@@ -11,7 +11,7 @@ class ResFONT {};
 
 class JUTResFont : public JUTFont {
 public:
-    JUTResFont(const u32 *, JKRArchive *);  // ResFont
+    JUTResFont(const ResFONT *, JKRArchive *);
     virtual ~JUTResFont();
 
     virtual void setGX();
@@ -28,7 +28,7 @@ public:
 
     void convertSjis(int, u16 *);
     void countBlock();
-    void initiate(const u32 *, JKRArchive *);  // ResFont
+    bool initiate(const ResFONT *, JKRArchive *);
     void loadFont();
     void loadImage(int, GXTexMapID tmapID);
 

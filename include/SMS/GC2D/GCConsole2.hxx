@@ -66,7 +66,11 @@ public:
     u32 mWaterCardTopHeight;      // 0x02B8
     u32 _2BC[0x50 / 4];           // 0x02BC
     u8 mWaterPressureAnimationFrame; // 0x030C
-    u8 _30D[0x11F];               // 0x030D
+    u8 _30D[0xFB];                // 0x030D
+    TBoundPane *mJetBalloonCurrent;  // 0x0408
+    TBoundPane *mJetBalloonCoaster;  // 0x040C
+    TBoundPane *mJetBalloonPianta;   // 0x0410
+    u32 _414[0x18 / 4];
     TExPane *mRedCoinPanelBack;   // 0x042C
     TExPane *mRedCoinPanel;       // 0x0430
     TExPane *_434;                // 0x0434
