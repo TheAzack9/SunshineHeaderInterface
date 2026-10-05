@@ -15,15 +15,19 @@ public:
     u32 *vTable;
     J3DPacket *mParentPacket;  // _4
     J3DPacket *mChildPacket;   // _8
+    void *mUserArea;
 };
 
 class J3DDrawPacket : public J3DPacket {
 public:
-    u8 _C[0x30 - 0xC];
+    u8 _10[0x30 - 0x10];
     u32 *_30;
 };
 
-class J3DCallbackPacket : public J3DPacket {};
+class J3DCallbackPacket : public J3DPacket {
+public:
+    void (*mCallback)(J3DCallbackPacket *, int);
+};
 
 class J3DShapePacket : public J3DCallbackPacket {};
 

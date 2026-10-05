@@ -2,6 +2,8 @@
 
 #include <Dolphin/types.h>
 
+struct ResTIMG;
+
 class J3DTexCoord {
 public:
     u8 _0;
@@ -13,7 +15,7 @@ public:
 class J3DTexture {
 public:
     u16 mImageNum;
-    void *mTexHeader;
+    ResTIMG *mTexHeader;
 
     J3DTexture(u16 imagenum, void *texheader);
     virtual ~J3DTexture();

@@ -3,6 +3,8 @@
 #include <Dolphin/types.h>
 #include <SMS/System/Params.hxx>
 
+class MActor;
+
 struct TWaterEmitInfo : public TParams {
     TWaterEmitInfo(const char *prm);
 
@@ -94,8 +96,9 @@ public:
     u16 mAnimState;
     s16 mGunAngle;
     s16 mWaistAngle;
+    u16 _372;
     f32 _374;
     f32 _378;
     f32 _37C;
-    f32 _380;
+    MActor *mActor;
 };  // 0x384

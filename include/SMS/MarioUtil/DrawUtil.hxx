@@ -6,6 +6,37 @@
 #include <JSystem/J3D/J3DModel.hxx>
 #include <JSystem/JDrama/JDRGraphics.hxx>
 #include <JSystem/JGeometry/JGMVec.hxx>
+#include <JSystem/JDrama/JDRViewObj.hxx>
+#include <Dolphin/GX_types.h>
+
+class JUTTexture;
+
+class TSilhouette : public JDrama::TViewObj {
+public:
+    void calcSilhouetteBorder();
+    void setting(Mtx);
+    void load(JSUMemoryInputStream &) override;
+    void loadAfter() override;
+    void perform(u32, JDrama::TGraphics *) override;
+
+    u16 _0E;
+    u16 _10;
+    GXColor mColor;
+    GXColor mSecondaryColor;
+    f32 _1C;
+    f32 _20;
+    f32 _24[3];
+    f32 _30;
+    f32 _34;
+    f32 _38;
+    f32 _3C;
+    JUTTexture *mTextures[2];
+    f32 _48;
+    f32 _4C;
+    f32 _50;
+};
+
+extern TSilhouette *gpSilhouetteManager;
 
 bool ViewFrustumClipCheck(JDrama::TGraphics *, Vec *, f32);
 void SetViewFrustumClipCheck(f32, f32, f32, f32, f32, f32);

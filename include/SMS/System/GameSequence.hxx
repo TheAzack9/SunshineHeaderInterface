@@ -58,3 +58,4 @@ public:
     u8 mEpisodeID;
     JDrama::TFlagT<u16> mFlag;
 };
+u8 SMS_getShineStage(u8);

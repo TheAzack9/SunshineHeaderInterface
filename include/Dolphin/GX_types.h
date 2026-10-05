@@ -1036,22 +1036,26 @@ typedef enum _GXTevKColorID {
  * \brief Type of the brightness decreasing function by distance.
  * @{
  */
-#define GX_DA_OFF    0
-#define GX_DA_GENTLE 1
-#define GX_DA_MEDIUM 2
-#define GX_DA_STEEP  3
+typedef enum _GXDistAttnFn {
+    GX_DA_OFF,
+    GX_DA_GENTLE,
+    GX_DA_MEDIUM,
+    GX_DA_STEEP
+} GXDistAttnFn;
 /*! @} */
 
 /*! \addtogroup spotfn Spot illumination distribution function
  * @{
  */
-#define GX_SP_OFF   0
-#define GX_SP_FLAT  1
-#define GX_SP_COS   2
-#define GX_SP_COS2  3
-#define GX_SP_SHARP 4
-#define GX_SP_RING1 5
-#define GX_SP_RING2 6
+typedef enum _GXSpotFn {
+    GX_SP_OFF,
+    GX_SP_FLAT,
+    GX_SP_COS,
+    GX_SP_COS2,
+    GX_SP_SHARP,
+    GX_SP_RING1,
+    GX_SP_RING2
+} GXSpotFn;
 /*! @} */
 
 /*! \addtogroup texfilter Texture filter types
@@ -1276,10 +1280,10 @@ typedef union _wgpipe {
     vf32 F32;
 } WGPipe;
 
-/*! \typedef struct _gx_color GXColor
+/*! \typedef struct _GXColor GXColor
  * \brief Structure used to pass colors to some GX functions.
  */
-typedef struct _gx_color {
+typedef struct _GXColor {
     u8 r; /*!< Red color component. */
     u8 g; /*!< Green color component. */
     u8 b; /*!< Blue alpha component. */

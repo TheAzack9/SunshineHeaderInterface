@@ -39,11 +39,11 @@ public:
     bool mIsAlreadyObtained;  // 0x01B4
     u32 _1B8[0x40 / 4];       // 0x01B8
 
-    static f32 mBowRate;
+    static f32 mBowRate[4];
     static f32 mCircleRate;
-    static f32 mKiraRate;
+    static f32 mKiraRate[4];
     static f32 mPromiLife;
-    static f32 mSenkoRate;
+    static f32 mSenkoRate[4];
     static f32 mSpeedDownRate;
     static f32 mUpSpeed;
 };

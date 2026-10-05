@@ -1,17 +1,18 @@
 #pragma once
 
 #include <Dolphin/types.h>
+#include <Dolphin/GX_types.h>
 
 class J3DVertexData {
 public:
     u32 _0;
     u32 _4;
-    u32 _8;
+    u32 mColorCount;
     u32 _C;
     u32 _10;
     u32 _14;
     u32 _18;
-    u32 _1C;
+    GXColor *mColors;
     u32 _20;
     u32 _24;
     u32 _28;

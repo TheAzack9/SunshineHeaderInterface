@@ -4042,6 +4042,7 @@ void GXInitLightPos(GXLightObj *lit_obj, f32 x, f32 y, f32 z);
  * \return none
  */
 void GXInitLightColor(GXLightObj *lit_obj, GXColor col);
+void GXGetLightColor(const GXLightObj *lit_obj, GXColor *col);
 
 /*!
  * \fn void GXInitLightDir(GXLightObj *lit_obj,f32 nx,f32 ny,f32 nz)

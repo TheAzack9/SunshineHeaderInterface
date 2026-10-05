@@ -6,6 +6,7 @@
 #include <JSystem/JDrama/JDRViewObj.hxx>
 #include <SMS/Map/BGCheck.hxx>
 #include <SMS/Map/MapCollisionData.hxx>
+#include <SMS/Map/MapModel.hxx>
 
 class TMapWarp {
 public:
@@ -52,8 +53,10 @@ public:
     void update();
 
     TMapCollisionData *mCollisionData;  // 0x0010
-    TMapWarp *mMapWarp;                 // 0x0014
-    TMapXlu *mMapXlu;                   // 0x0018
+    TMapModelManager *mModelManager;
+    TMapWarp *mMapWarp;
+    TMapXlu *mMapXlu;
+    u8 _20;
 };
 
 extern TMap *gpMap;

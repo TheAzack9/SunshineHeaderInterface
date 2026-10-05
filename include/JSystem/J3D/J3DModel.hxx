@@ -14,6 +14,7 @@ class J3DModelHierarchy;
 class J3DMaterial;
 class J3DNode;
 class J3DShape;
+class J3DTexture;
 
 class J3DModelData {
 public:
@@ -64,7 +65,7 @@ public:
     u16 *mCurrentJointIndex;
     u32 _A4;
     u32 _A8;
-    u32 _AC;
+    J3DTexture *mTexture;
     u32 _B0;
     u32 _B4;
     u32 _B8;

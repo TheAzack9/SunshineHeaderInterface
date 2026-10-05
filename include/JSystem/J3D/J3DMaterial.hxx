@@ -113,7 +113,7 @@ public:
     virtual s32 getTevOrder(s32 idx)                                           = 0;
     virtual void setTevColor(s32 idx, J3DGXColorS10 color)                     = 0;
     virtual void setTevColor(s32 idx, const J3DGXColorS10 *color)              = 0;
-    virtual s32 getTevColor(s32 idx)                                           = 0;
+    virtual J3DGXColorS10 *getTevColor(s32 idx)                                = 0;
     virtual void setTevKColor(s32 idx, J3DGXColor color)                       = 0;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color)                = 0;
     virtual J3DGXColor *getTevKColor(s32 idx)                                  = 0;
@@ -154,7 +154,7 @@ public:
     virtual s32 getTevOrder(s32 idx) override;
     virtual void setTevColor(s32 idx, J3DGXColorS10 color) override;
     virtual void setTevColor(s32 idx, const J3DGXColorS10 *color) override;
-    virtual s32 getTevColor(s32 idx) override;
+    virtual J3DGXColorS10 *getTevColor(s32 idx) override;
     virtual void setTevKColor(s32 idx, J3DGXColor color) override;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color) override;
     virtual J3DGXColor *getTevKColor(s32 idx) override;
@@ -195,7 +195,7 @@ public:
     virtual s32 getTevOrder(s32 idx) override;
     virtual void setTevColor(s32 idx, J3DGXColorS10 color) override;
     virtual void setTevColor(s32 idx, const J3DGXColorS10 *color) override;
-    virtual s32 getTevColor(s32 idx) override;
+    virtual J3DGXColorS10 *getTevColor(s32 idx) override;
     virtual void setTevKColor(s32 idx, J3DGXColor color) override;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color) override;
     virtual J3DGXColor *getTevKColor(s32 idx) override;
@@ -236,7 +236,7 @@ public:
     virtual s32 getTevOrder(s32 idx) override;
     virtual void setTevColor(s32 idx, J3DGXColorS10 color) override;
     virtual void setTevColor(s32 idx, const J3DGXColorS10 *color) override;
-    virtual s32 getTevColor(s32 idx) override;
+    virtual J3DGXColorS10 *getTevColor(s32 idx) override;
     virtual void setTevKColor(s32 idx, J3DGXColor color) override;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color) override;
     virtual J3DGXColor *getTevKColor(s32 idx) override;
@@ -277,7 +277,7 @@ public:
     virtual s32 getTevOrder(s32 idx) override;
     virtual void setTevColor(s32 idx, J3DGXColorS10 color) override;
     virtual void setTevColor(s32 idx, const J3DGXColorS10 *color) override;
-    virtual s32 getTevColor(s32 idx) override;
+    virtual J3DGXColorS10 *getTevColor(s32 idx) override;
     virtual void setTevKColor(s32 idx, J3DGXColor color) override;
     virtual void setTevKColor(s32 idx, const J3DGXColor *color) override;
     virtual J3DGXColor *getTevKColor(s32 idx) override;
@@ -359,7 +359,7 @@ public:
     u32 _14;  // padding?
     u32 *_18;
     u32 _1C;
-    u32 *_20;  // *TItemManager
+    J3DColorBlock *mColorBlock;
     u32 *_24;  // *TItemManager
     J3DTevBlock *mTevBlock;
     u32 _2C;  // *TItemManager

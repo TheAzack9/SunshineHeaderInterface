@@ -58,7 +58,9 @@ public:
     JUTRect mHealthPointRects[9];  // 0x01D0
     u32 _260[0xC / 4];
     TBoundPane *mWaterBackPanel;  // 0x026C
-    u32 _270[0x30 / 4];
+    u32 _270[2];
+    TBoundPane *mNozzlePanes[4];
+    u32 _288[0x18 / 4];
     J2DPicture *mWaterTopPanel;   // 0x02A0
     u32 _09[0x14 / 4];            // 0x02A4
     u32 mWaterCardTopHeight;      // 0x02B8

@@ -57,7 +57,9 @@ public:
     bool mIsEmitWater;                      // 0x1C86
     u8 _13;                                 // 0x1C87
     u32 _14[0x8 / 4];                       // 0x1C88
-    u32 _1C90[0x6C / 4];                    // 0x1C90
+    u32 _1C90[0x44 / 4];                    // 0x1C90
+    MActor *mActor;
+    u32 _1CD8[0x24 / 4];
     f32 mSwitchToSecondNozzleProgress;      // 0x1CFC
     f32 mSwitchToSecondNozzleSpeed;         // 0x1D00
     u32 _15;                                // 0x1D04

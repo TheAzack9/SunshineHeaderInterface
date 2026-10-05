@@ -13,6 +13,8 @@
 #include <SMS/System/BaseParam.hxx>
 #include <SMS/System/Params.hxx>
 
+class TEnemyManager;
+
 class TConductor : public JDrama::TNameRef {
 public:
     class TConductorParams : public TParams {
@@ -63,8 +65,8 @@ public:
     void registerSDLModelData(void * /*SDLModelData*/);
 
     u32 _0C;
-    JGadget::TList<TLiveActor *> _10;
-    JGadget::TList<TLiveActor *> _20;
+    JGadget::TList<TLiveManager *> mManagers;
+    JGadget::TList<TEnemyManager *> mEnemyManagers;
     JGadget::TList<TLiveActor *> _30;
     JGadget::TList<TLiveActor *> _40;
     JGadget::TList<TLiveActor *> _50;

@@ -11,10 +11,17 @@
 #include <SMS/Strategic/HitActor.hxx>
 #include <SMS/Strategic/ObjChara.hxx>
 
-/* Size -- 0x34 */
+class JPAEmitterManager;
+
 class TMarioParticleManager : public JDrama::TViewObj {
 public:
-    struct TInfo {};
+    struct TInfo {
+        const void *mOwner;
+        const void *mBinding;
+        u16 mPreviousFrameFlags;
+        u16 mFlags;
+        JPABaseEmitter *mEmitter;
+    };
 
     TMarioParticleManager(const char *);
     virtual ~TMarioParticleManager();
@@ -36,6 +43,12 @@ public:
     JPABaseEmitter *emitWithRotate(s32 effect, const TVec3f *, s16 x, s16 y, s16 z, u8,
                                    const void *owner);
     s32 getAvailableIdx(s32 effect, u8, const void *owner);
+
+    TInfo *mEffectInfo[214];
+    TInfo *mExtraEffectInfo[19];
+    s32 mInfoCount;
+    JPAEmitterManager *mEmitterManager;
 };
 
 extern TMarioParticleManager *gpMarioParticleManager;
+void SMSSetEmitterPolColor(JPABaseEmitter *, int);

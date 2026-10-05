@@ -1,6 +1,7 @@
 #pragma once
 
 #include <JSystem/J3D/J3DAnimation.hxx>
+#include <Dolphin/GX_types.h>
 #include <JSystem/JDrama/JDRActor.hxx>
 #include <JSystem/JDrama/JDRGraphics.hxx>
 #include <JSystem/JGeometry/JGMVec.hxx>
@@ -23,7 +24,9 @@ public:
     J3DFrameCtrl mFrameCtrl;  // 0x0050
     u32 _64[0x1C / 4];
     u8 mBlindingStrength;  // 0x0080
-    u32 _84[0x20 / 4];
+    u32 _84[2];
+    GXColorS10 mColors[2];
+    u32 _9C[0x8 / 4];
     JGeometry::TVec2<s16> _B4[11];  // 0x00B4
     JGeometry::TVec2<f32> _F8[11];  // 0x00F8
     u32 _150[0x5C / 4];

@@ -34,5 +34,10 @@ public:
     TVec3f mSize2;
     u32 _170;
     TVec3f mSize3;
-    u32 _180[0xB0 / 4];
+    GXColor mColors[2];
+    u32 mEmitFlags;
+    u32 mKeyAnmTypeMask;
+    TVec3f mScale;
+    TVec3f mTranslation;
+    u32 _1A8[0x88 / 4];
 };
