@@ -10,7 +10,7 @@ public:
 
     s32 getIndex(const char *name) const;
     u16 calcKeyCode(const char *name) const;
-    char *getName(const u16);
+    const char *getName(u16) const;
 
     ResNTab *mResTab;  // ResNTab*
     u32 _4;

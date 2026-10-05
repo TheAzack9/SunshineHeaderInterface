@@ -37,6 +37,7 @@ public:
 
     u16 getMaterialNum() const { return mMaterialNum; }
     J3DMaterial *getMaterialNodePointer(u16 index) const { return mMaterials[index]; }
+    JUTNameTab *getTextureName() const { return mTextureName; }
 
     u32 _4;
     u32 _8;
@@ -64,7 +65,7 @@ public:
     J3DDrawMtxData mDrawMtxData;  // _98
     u16 *mCurrentJointIndex;
     u32 _A4;
-    u32 _A8;
+    JUTNameTab *mTextureName;
     J3DTexture *mTexture;
     u32 _B0;
     u32 _B4;
