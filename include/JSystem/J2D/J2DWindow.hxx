@@ -7,6 +7,8 @@ class J2DWindow : public J2DPane {
 public:
     class Texture;
 
+    J2DWindow(J2DPane *, JSURandomInputStream *, bool);
+
     JUTRect mFillRect;
     void *_FC;
     Texture *mTextures[5];
